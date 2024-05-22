@@ -1,6 +1,7 @@
 package io.bhimsur.posservice.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,6 @@ public class SaveProductRequest implements Serializable {
 	private BigDecimal price;
 	@PositiveOrZero
 	private Integer stock;
-	@PositiveOrZero
+	@Positive
 	private Long typeId;
 }
