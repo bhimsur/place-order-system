@@ -1,0 +1,5 @@
+id;created_at;updated_at;created_by;updated_by;deleted;name;address;username;password
+1;2024-05-21 10:00:00;null;system;null;false;John Doe;Jl Purwakarta 200, Jawa Barat;john1doe;Bintaro2@
+2;2024-05-21 10:00:00;null;system;null;false;Jane Doe;Jl Perintis Kemerdekaan Bl 7/8P, Dki Jakarta;jane2doe;Bintaro2@
+3;2024-05-21 10:00:00;null;system;null;false;Abdul X;Jl Pulo Sidik Bl R/30, Dki Jakarta;abdulx12;Bintaro2@
+4;2024-05-21 10:00:00;null;system;null;false;Benjamin Pavard;Jl Tambun Rengas Gg I RT 16/12, Dki Jakarta;bpavard4;Bintaro2@

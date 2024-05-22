@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
+
+    <changeSet id="1716268196745-1" author="bhimsur">
+        <createTable tableName="product">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_product"/>
+            </column>
+            <column name="created_at" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by" type="VARCHAR(255)"/>
+            <column name="deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="DECIMAL">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_id" type="BIGINT"/>
+            <column name="stock" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="product" constraintName="FK_PRODUCT_ON_TYPE"
+                                 referencedColumnNames="id" referencedTableName="product_type"/>
+    </changeSet>
+    <changeSet id="1716273319138-1" author="bhimsur">
+        <loadData tableName="product" file="db/fake-data/product.csv" separator=";"/>
+    </changeSet>
+    <changeSet id="1716281340205-1" author="bhimsur">
+        <sql dbms="mysql">
+            ALTER TABLE product AUTO_INCREMENT = 100;
+        </sql>
+        <sql dbms="h2">
+            ALTER TABLE product ALTER COLUMN id RESTART WITH 100;
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>

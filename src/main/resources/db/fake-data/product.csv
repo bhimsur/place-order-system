@@ -1,0 +1,24 @@
+id;created_at;updated_at;created_by;updated_by;deleted;name;price;type_id;stock
+1;2024-05-21 10:00:00;null;system;null;false;Sapu;12000;1;5
+2;2024-05-21 10:00:00;null;system;null;false;Spring Boot From Scratch;120000;2;5
+3;2024-05-21 10:00:00;null;system;null;false;Lulus CPNS;78000;2;12
+4;2024-05-21 10:00:00;null;system;null;false;Xbox Controller;570000;7;12
+5;2024-05-21 10:00:00;null;system;null;false;iPhone 15 128gb;14000000;9;11
+6;2024-05-21 10:00:00;null;system;null;false;Bola Basket;110000;13;1
+7;2024-05-21 10:00:00;null;system;null;false;Skintific Mugwort;78000;10;23
+8;2024-05-21 10:00:00;null;system;null;false;Shell Advance 30T;46000;12;33
+9;2024-05-21 10:00:00;null;system;null;false;Kemeja Cuban;120000;6;43
+10;2024-05-21 10:00:00;null;system;null;false;Kemeja Formal;120000;6;94
+11;2024-05-21 10:00:00;null;system;null;false;Wajan Anti Lengket;150000;3;10
+12;2024-05-21 10:00:00;null;system;null;false;Gelas Kaca;7500;3;3
+13;2024-05-21 10:00:00;null;system;null;false;Set Pisau;10500;3;5
+14;2024-05-21 10:00:00;null;system;null;false;Vitacimin;2000;11;25
+15;2024-05-21 10:00:00;null;system;null;false;Decolgen;1200;11;55
+16;2024-05-21 10:00:00;null;system;null;false;Enervon C;6000;11;73
+17;2024-05-21 10:00:00;null;system;null;false;Kapas Tipis;15000;10;32
+18;2024-05-21 10:00:00;null;system;null;false;Tissue Wajah;7800;10;87
+19;2024-05-21 10:00:00;null;system;null;false;Tissue Basah;14000;10;83
+20;2024-05-21 10:00:00;null;system;null;false;Kaftan;178000;5;73
+21;2024-05-21 10:00:00;null;system;null;false;Baju Koko;115000;5;87
+22;2024-05-21 10:00:00;null;system;null;false;Peci;40000;5;76
+23;2024-05-21 10:00:00;null;system;null;true;Peci RGB;47000;5;73

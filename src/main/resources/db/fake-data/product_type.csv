@@ -1,0 +1,14 @@
+id;created_at;updated_at;created_by;updated_by;deleted;name;description
+1;2024-05-21 10:00:00;null;system;null;false;Rumah Tangga;Tipe Rumah Tangga
+2;2024-05-21 10:00:00;null;system;null;false;Buku;Tipe Buku
+3;2024-05-21 10:00:00;null;system;null;false;Dapur;Tipe Dapur
+4;2024-05-21 10:00:00;null;system;null;false;Fashion Anak;Tipe Fashion Anak
+5;2024-05-21 10:00:00;null;system;null;false;Fashion Muslim;Tipe Fashion Muslim
+6;2024-05-21 10:00:00;null;system;null;false;Fashion Dewasa;Tipe Fashion Dewasa
+7;2024-05-21 10:00:00;null;system;null;false;Gaming;Tipe Gaming
+8;2024-05-21 10:00:00;null;system;null;false;Film & Musik;Tipe Film & Musik
+9;2024-05-21 10:00:00;null;system;null;false;Handphone & Tablet;Tipe Handphone & Tablet
+10;2024-05-21 10:00:00;null;system;null;false;Kecantikan;Tipe Kecantikan
+11;2024-05-21 10:00:00;null;system;null;false;Kesehatan;Tipe Kesehatan
+12;2024-05-21 10:00:00;null;system;null;false;Otomotif;Tipe Otomotif
+13;2024-05-21 10:00:00;null;system;null;false;Olahraga;Tipe Olahraga

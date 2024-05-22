@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
+
+    <changeSet id="1716268182596-1" author="bhimsur">
+        <createTable tableName="product_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_producttype"/>
+            </column>
+            <column name="created_at" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by" type="VARCHAR(255)"/>
+            <column name="deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1716269227089-1" author="bhimsur">
+        <loadData tableName="product_type" file="db/fake-data/product_type.csv" separator=";"/>
+    </changeSet>
+    <changeSet id="1716281320872-1" author="bhimsur">
+        <sql dbms="mysql">
+            ALTER TABLE product_type AUTO_INCREMENT = 100;
+        </sql>
+
+        <sql dbms="h2">
+            ALTER TABLE product_type ALTER COLUMN id RESTART WITH 100;
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.24.xsd">
+
+
+    <changeSet id="1716311992132-1" author="bhimsur">
+        <createTable tableName="product_order_transaction">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_productordertransaction"/>
+            </column>
+            <column name="created_at" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="created_by" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by" type="VARCHAR(255)"/>
+            <column name="deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="DECIMAL">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="quantity" type="INT"/>
+            <column name="parent_product_id" type="BIGINT"/>
+            <column name="order_transaction_id" type="BIGINT"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="order_transaction_id" baseTableName="product_order_transaction"
+                                 constraintName="FK_PRODUCTORDERTRANSACTION_ON_ORDERTRANSACTION"
+                                 referencedColumnNames="id" referencedTableName="order_transaction"/>
+        <addForeignKeyConstraint baseColumnNames="parent_product_id" baseTableName="product_order_transaction"
+                                 constraintName="FK_PRODUCTORDERTRANSACTION_ON_PARENTPRODUCT" referencedColumnNames="id"
+                                 referencedTableName="product"/>
+    </changeSet>
+</databaseChangeLog>

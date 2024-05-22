@@ -1,0 +1,55 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table customer {
+  id integer
+  name string
+  address string
+  username string
+  password string
+}
+
+Table product_type {
+  id integer
+  name string
+  description string
+}
+
+Table product {
+  id integer
+  name string
+  price decimal
+  type_id integer
+  stock integer
+}
+
+Table order_transaction {
+  id integer
+  status string
+  reference_number string
+  customer_id integer
+}
+
+Table cart {
+  id integer
+  customer_id integer
+  product_id integer
+  quantity integer
+}
+
+Table product_order_transaction {
+  id integer
+  name string
+  price decimal
+  type string
+  quantity integer
+  parent_product_id integer
+  order_transaction_id integer
+}
+
+Ref: customer.id < order_transaction.customer_id
+Ref: customer.id < cart.customer_id
+Ref: product.id < cart.product_id
+Ref: product.id < product_order_transaction.parent_product_id
+Ref: product_type.id < product.type_id
+Ref: order_transaction.id < product_order_transaction.order_transaction_id
