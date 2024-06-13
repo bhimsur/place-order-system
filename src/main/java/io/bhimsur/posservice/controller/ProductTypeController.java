@@ -1,5 +1,6 @@
 package io.bhimsur.posservice.controller;
 
+import io.bhimsur.posservice.dto.ApiResponse;
 import io.bhimsur.posservice.dto.ProductTypeDto;
 import io.bhimsur.posservice.service.ProductTypeService;
 import jakarta.validation.constraints.NotNull;
@@ -26,6 +27,6 @@ public class ProductTypeController {
 			Pageable pageable
 	) {
 		Page<ProductTypeDto> response = productTypeService.findAll(deleted, pageable);
-		return ResponseEntity.ok(response);
+		return ApiResponse.success(response);
 	}
 }

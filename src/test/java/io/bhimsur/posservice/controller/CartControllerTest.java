@@ -111,8 +111,8 @@ public class CartControllerTest {
 						.param("username", this.customer.getUsername())
 				)
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.items").isEmpty())
-				.andExpect(jsonPath("$.total").value(BigDecimal.ZERO))
+				.andExpect(jsonPath("$.data.items").isEmpty())
+				.andExpect(jsonPath("$.data.total").value(BigDecimal.ZERO))
 				.andDo(MockMvcResultHandlers.print());
 	}
 
@@ -122,7 +122,7 @@ public class CartControllerTest {
 		this.mockMvc.perform(get("/api/carts")
 						.param("username", ""))
 				.andExpect(status().isBadRequest())
-				.andExpect(jsonPath("$.message").isNotEmpty())
+				.andExpect(jsonPath("$.data").isNotEmpty())
 				.andDo(MockMvcResultHandlers.print());
 	}
 
@@ -132,7 +132,7 @@ public class CartControllerTest {
 		this.mockMvc.perform(get("/api/carts")
 						.param("username", "jjj11444"))
 				.andExpect(status().isBadRequest())
-				.andExpect(jsonPath("$.message").isNotEmpty())
+				.andExpect(jsonPath("$.data").isNotEmpty())
 				.andDo(MockMvcResultHandlers.print());
 	}
 
@@ -150,7 +150,7 @@ public class CartControllerTest {
 						.content(objectMapper.writeValueAsBytes(request))
 				)
 				.andExpect(status().isBadRequest())
-				.andExpect(jsonPath("$.message").isString())
+				.andExpect(jsonPath("$.data").isArray())
 				.andDo(MockMvcResultHandlers.print());
 	}
 
@@ -198,7 +198,7 @@ public class CartControllerTest {
 						.content(objectMapper.writeValueAsBytes(request))
 				)
 				.andExpect(status().isBadRequest())
-				.andExpect(jsonPath("$.message").value("Invalid Stock Quantity"))
+				.andExpect(jsonPath("$.data").value("Invalid Stock Quantity"))
 				.andDo(MockMvcResultHandlers.print());
 	}
 
@@ -210,7 +210,7 @@ public class CartControllerTest {
 						.param("username", this.customer.getUsername())
 				)
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.items").isNotEmpty())
+				.andExpect(jsonPath("$.data.items").isNotEmpty())
 				.andDo(MockMvcResultHandlers.print());
 
 	}

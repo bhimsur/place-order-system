@@ -1,5 +1,6 @@
 package io.bhimsur.posservice.controller;
 
+import io.bhimsur.posservice.dto.ApiResponse;
 import io.bhimsur.posservice.dto.ProductDto;
 import io.bhimsur.posservice.dto.SaveProductRequest;
 import io.bhimsur.posservice.service.ProductService;
@@ -28,7 +29,7 @@ public class ProductController {
 			Pageable pageable
 	) {
 		Page<ProductDto> response = productService.findAll(type, name, deleted, pageable);
-		return ResponseEntity.ok(response);
+		return ApiResponse.success(response);
 	}
 
 	@PostMapping
@@ -36,7 +37,7 @@ public class ProductController {
 			@RequestBody @Valid SaveProductRequest request
 	) throws Exception {
 		ProductDto response = productService.saveProduct(null, request);
-		return ResponseEntity.status(HttpStatus.CREATED).body(response);
+		return ApiResponse.success(HttpStatus.CREATED, response);
 	}
 
 	@PutMapping("/{id}")
@@ -45,7 +46,7 @@ public class ProductController {
 			@PathVariable @Positive Long id
 	) throws Exception {
 		ProductDto response = productService.saveProduct(id, request);
-		return ResponseEntity.ok(response);
+		return ApiResponse.success(response);
 	}
 
 	@DeleteMapping("/{id}")
@@ -53,6 +54,6 @@ public class ProductController {
 			@PathVariable @Positive Long id
 	) {
 		productService.deleteProduct(id);
-		return ResponseEntity.noContent().build();
+		return ApiResponse.success(HttpStatus.NO_CONTENT);
 	}
 }

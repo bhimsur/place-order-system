@@ -137,7 +137,7 @@ public class OrderControllerTest {
 						.content(objectMapper.writeValueAsBytes(request))
 				)
 				.andExpect(status().isBadRequest())
-				.andExpect(jsonPath("$.message").value("Found Invalid Id"))
+				.andExpect(jsonPath("$.data").value("Found Invalid Id"))
 				.andDo(MockMvcResultHandlers.print());
 	}
 
@@ -151,13 +151,13 @@ public class OrderControllerTest {
 						.content(objectMapper.writeValueAsBytes(request))
 				)
 				.andExpect(status().isCreated())
-				.andExpect(jsonPath("$.refNum").isNotEmpty())
+				.andExpect(jsonPath("$.data.refNum").isNotEmpty())
 				.andDo(MockMvcResultHandlers.print())
 				.andReturn();
 		byte[] responseContent = mvcResult.getResponse().getContentAsByteArray();
 
 		JsonNode jsonNode = objectMapper.readTree(responseContent);
-		String refNum = jsonNode.get("refNum").asText();
+		String refNum = jsonNode.get("data").get("refNum").asText();
 
 		SpecificationBuilder<OrderTransaction> spec1 = new SpecificationBuilder<>("referenceNumber", "=", refNum);
 		Optional<OrderTransaction> result = orderTransactionRepository.findOne(spec1);
@@ -182,8 +182,8 @@ public class OrderControllerTest {
 						.param("username", "jane1doe")
 				)
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.content").isEmpty())
-				.andExpect(jsonPath("$.empty").value(true))
+				.andExpect(jsonPath("$.data.content").isEmpty())
+				.andExpect(jsonPath("$.data.empty").value(true))
 				.andDo(MockMvcResultHandlers.print());
 	}
 
@@ -195,8 +195,8 @@ public class OrderControllerTest {
 						.param("username", "john1doe")
 				)
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.content").isNotEmpty())
-				.andExpect(jsonPath("$.totalElements").value(1))
+				.andExpect(jsonPath("$.data.content").isNotEmpty())
+				.andExpect(jsonPath("$.data.totalElements").value(1))
 				.andDo(MockMvcResultHandlers.print());
 	}
 

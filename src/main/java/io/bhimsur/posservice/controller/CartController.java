@@ -1,6 +1,7 @@
 package io.bhimsur.posservice.controller;
 
 import io.bhimsur.posservice.dto.AddToCartRequest;
+import io.bhimsur.posservice.dto.ApiResponse;
 import io.bhimsur.posservice.dto.CartResponse;
 import io.bhimsur.posservice.service.CartService;
 import jakarta.validation.Valid;
@@ -25,7 +26,7 @@ public class CartController {
 			Sort sort
 	) throws Exception {
 		CartResponse response = cartService.findCartByUsername(username, sort);
-		return ResponseEntity.ok(response);
+		return ApiResponse.success(response);
 	}
 
 	@PostMapping
@@ -33,7 +34,7 @@ public class CartController {
 			@RequestBody @Valid AddToCartRequest request
 	) throws Exception {
 		Boolean response = cartService.addToCart(request);
-		return ResponseEntity.status(HttpStatus.CREATED).build();
+		return ApiResponse.success(HttpStatus.CREATED, request);
 	}
 
 

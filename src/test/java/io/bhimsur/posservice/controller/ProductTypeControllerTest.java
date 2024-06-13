@@ -48,7 +48,7 @@ public class ProductTypeControllerTest {
 						.param("deleted", "false")
 				)
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.content").isNotEmpty())
+				.andExpect(jsonPath("$.data.content").isNotEmpty())
 				.andDo(MockMvcResultHandlers.print());
 	}
 }

@@ -87,8 +87,8 @@ public class ProductControllerTest {
 						.param("deleted", "false")
 						.param("sort", "id,desc"))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.content").isNotEmpty())
-				.andExpect(jsonPath("$.sort.sorted").value(true))
+				.andExpect(jsonPath("$.data.content").isNotEmpty())
+				.andExpect(jsonPath("$.data.sort.sorted").value(true))
 				.andDo(MockMvcResultHandlers.print());
 	}
 
@@ -99,8 +99,8 @@ public class ProductControllerTest {
 						.param("deleted", "true")
 						.param("type", "Book"))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.content").isEmpty())
-				.andExpect(jsonPath("$.empty").value(true))
+				.andExpect(jsonPath("$.data.content").isEmpty())
+				.andExpect(jsonPath("$.data.empty").value(true))
 				.andDo(MockMvcResultHandlers.print());
 	}
 
@@ -118,7 +118,7 @@ public class ProductControllerTest {
 						.content(objectMapper.writeValueAsBytes(request))
 				)
 				.andExpect(status().isBadRequest())
-				.andExpect(jsonPath("$.errors").isNotEmpty())
+				.andExpect(jsonPath("$.data").isNotEmpty())
 				.andDo(MockMvcResultHandlers.print());
 	}
 
@@ -157,7 +157,7 @@ public class ProductControllerTest {
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(objectMapper.writeValueAsBytes(request)))
 				.andExpect(status().isBadRequest())
-				.andExpect(jsonPath("$.message").isNotEmpty())
+				.andExpect(jsonPath("$.data").isNotEmpty())
 				.andDo(MockMvcResultHandlers.print());
 	}
 

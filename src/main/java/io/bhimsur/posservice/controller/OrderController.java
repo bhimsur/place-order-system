@@ -1,5 +1,6 @@
 package io.bhimsur.posservice.controller;
 
+import io.bhimsur.posservice.dto.ApiResponse;
 import io.bhimsur.posservice.dto.OrderDto;
 import io.bhimsur.posservice.dto.PlaceOrderRequest;
 import io.bhimsur.posservice.dto.PlaceOrderResponse;
@@ -29,7 +30,7 @@ public class OrderController {
 			@RequestBody PlaceOrderRequest request
 	) throws Exception {
 		PlaceOrderResponse response = orderService.placeOrder(request);
-		return ResponseEntity.status(HttpStatus.CREATED).body(response);
+		return ApiResponse.success(HttpStatus.CREATED, response);
 	}
 
 	@GetMapping(
@@ -40,6 +41,6 @@ public class OrderController {
 			Pageable pageable
 	) {
 		Page<OrderDto> response = orderService.myOrder(username, pageable);
-		return ResponseEntity.ok(response);
+		return ApiResponse.success(response);
 	}
 }
